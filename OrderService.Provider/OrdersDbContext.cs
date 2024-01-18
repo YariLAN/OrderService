@@ -11,7 +11,7 @@ namespace OrderService.Provider
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=OrdersDb;User Id=admin;Password=Post");
+                optionsBuilder.UseNpgsql("Host=postgres_db;Port=5432;Database=OrdersDb;User Id=admin;Password=Post");
             }
         }
 
