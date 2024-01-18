@@ -11,7 +11,7 @@
 
 <div style="margin-top: 20px;">
     <center>
-        <table class="table">
+        <table>
             <thead>
                 <tr>
                     <th></th>
@@ -42,8 +42,8 @@
                 @foreach (var item in Model)
                 {
                         <tr>
-                            <td>
-                                <a style="text-decoration: none;" href="@Url.Action("GetAsync", "Home", new {id = item.Id})">-->></a>
+                        <td style="width: 65px; font-family: monospace; font-size: 18px;">
+                                <a style="text-decoration: none;" href="@Url.Action("GetAsync", "Home", new {id = item.Id})">--></a>
                             </td>
                             <td>
                                @Html.DisplayFor(modelItem => item.Id)
