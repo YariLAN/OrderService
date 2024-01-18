@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Business.Interfaces;
 using OrderService.Models.Dto.Requests;
+using OrderService.Models.Dto.Responses;
 
 namespace OrderService.Controllers
 {
@@ -33,7 +34,7 @@ namespace OrderService.Controllers
             return RedirectToAction(nameof(Index), "Home");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetAsync/{id}")]
         public async Task<IActionResult> GetAsync(
             [FromServices] IGetOrderCommand command,
             [FromRoute] int id,
@@ -41,7 +42,12 @@ namespace OrderService.Controllers
         {
             var order = await command.ExecuteAsync(id, ct);
 
-            return View();
+            if (order is null)
+            {
+                return NotFound();
+            }
+
+            return View("Item", order);
         }
     }
 }

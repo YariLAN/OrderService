@@ -1,0 +1,64 @@
+﻿@using OrderService.Models.Dto.Responses
+@model OrderResponse
+
+<div class="text-center">
+    <h1 class="display-4">Список заказов</h1>
+</div>
+
+<div class="container">
+    <div data-cm-modal="create" class="cm-modal is-open">
+        <div>
+            <div class="cm-modal__body p-16 px-24:md">
+                <div class="cm-modal__close">
+                    <a href="../" class="svg-icon svg-icon--lg txt-secondary" style="text-align: end; margin: 15px;">
+                        X
+                    </a>
+                </div>
+                <div class="div-form" style="margin: 20px;">
+                    <div class="cm-form-field mb-16" style="margin-bottom: 10px;">
+                        <div class="cm-form-field__content">
+                            <table class="cm-control">
+                                <thead>
+                                    <tr>
+                                        <th>Наименование</th>
+                                        <th>Значение</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Номер</td>
+                                        <td>@Model.Id</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Город отправителя</td>
+                                        <td>@Model.CitySender</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Адрес отправителя</td>
+                                        <td>@Model.AddressSender</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Город получателя</td>
+                                        <td>@Model.CityRecipient</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Адрес получателя</td>
+                                        <td>@Model.AddressRecipient</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вес груза (в кг)</td>
+                                        <td>@Model.WeightCargo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Дата забора заказа</td>
+                                        <td>@Model.DateDispatch</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

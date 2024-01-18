@@ -5,6 +5,6 @@ namespace OrderService.Mappers.Interfaces
 {
     public interface IOrderResponseMapper
     {
-        public OrderResponse Map(Order order);
+        public OrderResponse? Map(Order? order);
     }
 }

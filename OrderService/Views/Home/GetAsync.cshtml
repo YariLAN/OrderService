@@ -1,5 +1,5 @@
 ﻿@using OrderService.Models.Dto.Responses
-@model IEnumerable<OrderResponse?>?
+@model List<OrderResponse?>?
 
 @{
     ViewData["Title"] = "Orders";
@@ -14,6 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>
                         Номер
                     </th>
@@ -40,29 +41,32 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CitySender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AddressSender)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CityRecipient)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AddressRecipient)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.WeightCargo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateDispatch)
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <a style="text-decoration: none;" href="@Url.Action("GetAsync", "Home", new {id = item.Id})">-->></a>
+                            </td>
+                            <td>
+                               @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CitySender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AddressSender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CityRecipient)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AddressRecipient)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WeightCargo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateDispatch)
+                            </td>
+                        </tr>
                 }
             </tbody>
         </table>
