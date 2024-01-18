@@ -1,0 +1,131 @@
+﻿@using OrderService.Models.Dto.Responses
+@model IEnumerable<OrderResponse?>?
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Список заказов</h1>
+</div>
+
+<div style="margin-top: 20px;">
+    <center>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Номер
+                    </th>
+                    <th>
+                        Город отправителя
+                    </th>
+                    <th>
+                        Адрес отправителя
+                    </th>
+                    <th>
+                        Город получателя
+                    </th>
+                    <th>
+                        Адрес получателя
+                    </th>
+                    <th>
+                        Вес груза
+                    </th>
+                    <th>
+                        Дата забора груза
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CitySender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddressSender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CityRecipient)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddressRecipient)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WeightCargo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDispatch)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </center>
+</div>
+
+<div class="container">
+    <button id="addOrderBtn" class="add-order-btn">Добавить заказ</button>
+    <div data-cm-modal="create" class="cm-modal">
+        <div class="design">
+            <div class="cm-modal__body p-16 px-24:md">
+                <div aria-label="Close" class="cm-modal__close">
+                    <div class="svg-icon svg-icon--lg txt-secondary" style="text-align: end; margin: 15px;">
+                        X
+                    </div>
+                </div>
+                <div class="div-form" style="margin: 20px;">
+                    @using (Html.BeginForm("CreateAsync", "Home", FormMethod.Post))
+                    {
+                        <div class="cm-form-field mb-16" style="margin-bottom: 10px;">
+                            <div class="cm-form-field__content">
+                                <input required="required" type="text" name="CitySender" placeholder="Город отправителя" class="cm-control cm-control--lg">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <div>
+                                <input required="required" type="text" name="AddressSender" placeholder="Адрес отправителя" class="cm-control cm-control--lg">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <div>
+                                <input required="required" type="text" name="CityRecipient" placeholder="Город получателя" class="cm-control cm-control--lg">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <div>
+                                <input required="required" type="text" name="AddressRecipient" placeholder="Адрес получателя" class="cm-control cm-control--lg">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <div>
+                                <input required="required" type="text" name="WeightCargo" placeholder="Вес груза" class="cm-control cm-control--lg">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <div>
+                                <input required="required" type="date" name="DateDispatch" placeholder="Дата забора заказа" class="cm-control cm-control--lg">
+                            </div>
+                        </div>
+
+                        <div class="cm-form-field mb-12" style="margin-bottom: 10px;">
+                            <div class="cm-form-field__content">
+                                <button type="submit" class="button button--lg wd-1">Добавить</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

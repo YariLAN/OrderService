@@ -6,8 +6,13 @@ namespace OrderService.Controllers
 {
     public class HomeController : Controller
     {
+        public async Task<IActionResult> Index()
+        {
+            return RedirectToAction("GetAsync", "Home");
+        }
+
         [HttpGet]
-        public async Task<IActionResult> Index(
+        public async Task<IActionResult> GetAsync(
             [FromServices] IGetOrdersCommand command,
             CancellationToken ct)
         {
@@ -25,7 +30,7 @@ namespace OrderService.Controllers
         {
             var orderId = await command.ExecuteAsync(request, ct);
 
-            return RedirectToAction(nameof(Index), "Orders");
+            return RedirectToAction(nameof(Index), "Home");
         }
 
         [HttpGet("{id}")]

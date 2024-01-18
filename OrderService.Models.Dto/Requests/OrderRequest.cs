@@ -20,6 +20,6 @@ namespace OrderService.Models.Dto.Requests
         public string WeightCargo { get; set; }
 
         [Required]
-        public DateTime DateDispatch { get; set; }
+        public DateOnly DateDispatch { get; set; }
     }
 }

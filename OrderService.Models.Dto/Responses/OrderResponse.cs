@@ -14,6 +14,6 @@
 
         public string WeightCargo { get; set; }
 
-        public DateTime DateDispatch { get; set; }
+        public DateOnly DateDispatch { get; set; }
     }
 }
