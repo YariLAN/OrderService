@@ -25,7 +25,6 @@ namespace OrderService.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(
             [FromServices] ICreateOrderCommand command,
-            [Bind("CitySender", "AddressSender", "CityRecipient", "AddressRecipient", "WeightCargo", "DateDispatch")]
             OrderRequest request,
             CancellationToken ct)
         {

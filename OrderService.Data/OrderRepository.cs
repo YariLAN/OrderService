@@ -32,7 +32,7 @@ namespace OrderService.Data
 
         public async Task<List<Order>> GetOrdersAsync(CancellationToken ct)
         {
-            var orders = await _provider.Orders.AsNoTracking().ToListAsync(ct);
+            var orders = await _provider.Orders.AsNoTracking().OrderByDescending(x => x.Id).ToListAsync(ct);
 
             return orders;
         }
